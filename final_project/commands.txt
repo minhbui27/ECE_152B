@@ -1,0 +1,99 @@
+-------------------------------------Writing into memory:-------------------------------------
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address c000_0000 -len 1 -data {00000001}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address C000_0004 -len 1 -data {00000002}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address C000_0008 -len 1 -data {00000003}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address C000_000C -len 1 -data {00000004}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address C000_0010 -len 1 -data {00000005}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address C000_0014 -len 1 -data {00000006}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address C000_0018 -len 1 -data {00000007}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address C000_001C -len 1 -data {00000008}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+-------------------------------------Read 8 memory blocks:-------------------------------------
+
+create_hw_axi_txn -force read_txn [get_hw_axis hw_axi_1] -type read -address C000_0000 -len 1
+run_hw_axi [get_hw_axi_txns read_txn]
+
+create_hw_axi_txn -force read_txn [get_hw_axis hw_axi_1] -type read -address C000_0004 -len 1
+run_hw_axi [get_hw_axi_txns read_txn]
+
+create_hw_axi_txn -force read_txn [get_hw_axis hw_axi_1] -type read -address C000_0008 -len 1
+run_hw_axi [get_hw_axi_txns read_txn]
+
+create_hw_axi_txn -force read_txn [get_hw_axis hw_axi_1] -type read -address C000_000C -len 1
+run_hw_axi [get_hw_axi_txns read_txn]
+
+create_hw_axi_txn -force read_txn [get_hw_axis hw_axi_1] -type read -address C000_0010 -len 1
+run_hw_axi [get_hw_axi_txns read_txn]
+
+create_hw_axi_txn -force read_txn [get_hw_axis hw_axi_1] -type read -address C000_0014 -len 1
+run_hw_axi [get_hw_axi_txns read_txn]
+
+create_hw_axi_txn -force read_txn [get_hw_axis hw_axi_1] -type read -address C000_0018 -len 1
+run_hw_axi [get_hw_axi_txns read_txn]
+
+create_hw_axi_txn -force read_txn [get_hw_axis hw_axi_1] -type read -address C000_001C -len 1
+run_hw_axi [get_hw_axi_txns read_txn]
+
+-------------------------------------Write into the offset and mult registers:-------------------------------------
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address 4001_0000 -len 1 -data {00000009}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address 4001_0008 -len 1 -data {0000002a}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+-------------------------------------Read the offset and mult registers:-------------------------------------
+
+create_hw_axi_txn -force read_txn [get_hw_axis hw_axi_1] -type read -address 4001_0000 -len 1
+run_hw_axi [get_hw_axi_txns read_txn]
+
+create_hw_axi_txn -force read_txn [get_hw_axis hw_axi_1] -type read -address 4001_0008 -len 1
+run_hw_axi [get_hw_axi_txns read_txn]
+
+-------------------------------------Testing read command-------------------------------------
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address 4000_0000 -len 1 -data {00000008}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address 4000_0000 -len 1 -data {00000009}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+-------------------------------------Testing complement command-------------------------------------
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address 4000_0000 -len 1 -data {00000008}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address 4000_0000 -len 1 -data {00000009}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+-------------------------------------Testing add command-------------------------------------
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address 4000_0000 -len 1 -data {00000088}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address 4000_0000 -len 1 -data {00000089}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+-------------------------------------Testing multiply command-------------------------------------
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address 4000_0000 -len 1 -data {000000c8}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force write_txn [get_hw_axis hw_axi_1] -type write -address 4000_0000 -len 1 -data {000000c9}
+run_hw_axi [get_hw_axi_txns write_txn]
+
+create_hw_axi_txn -force read_txn [get_hw_axis hw_axi_1] -type read -address 4000_0008 -len 1
+run_hw_axi [get_hw_axi_txns read_txn]
+
